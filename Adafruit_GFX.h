@@ -231,7 +231,12 @@ class GFXcanvas1 : public Adafruit_GFX {
   ~GFXcanvas1(void);
   void     drawPixel(int16_t x, int16_t y, uint16_t color),
            fillScreen(uint16_t color);
+  bool     getPixel(int16_t x, int16_t y) const;
   uint8_t *getBuffer(void);
+
+ protected:
+  bool getRawPixel(int16_t x, int16_t y) const;
+
  private:
   uint8_t *buffer;
 };
@@ -246,7 +251,12 @@ class GFXcanvas8 : public Adafruit_GFX {
            fillScreen(uint16_t color),
            writeFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color);
 
+  uint8_t     getPixel(int16_t x, int16_t y) const;
   uint8_t *getBuffer(void);
+
+ protected:
+  uint8_t getRawPixel(int16_t x, int16_t y) const;
+
  private:
   uint8_t *buffer;
 };
@@ -259,7 +269,12 @@ class GFXcanvas16 : public Adafruit_GFX {
   ~GFXcanvas16(void);
   void      drawPixel(int16_t x, int16_t y, uint16_t color),
             fillScreen(uint16_t color);
+  uint16_t     getPixel(int16_t x, int16_t y) const;
   uint16_t *getBuffer(void);
+
+ protected:
+  uint16_t getRawPixel(int16_t x, int16_t y) const;
+
  private:
   uint16_t *buffer;
 };

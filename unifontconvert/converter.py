@@ -165,6 +165,10 @@ def toggle_progmem_blocks():
             print("Block 00 must always reside in PROGMEM.")
         elif block_to_toggle == 'DONE':
             return
+        elif block_to_toggle == 'ALL': # Toggle ALL blocks
+            for i in blocks:
+                blocks[i].include_in_progmem ^= True
+            blocks['00'].include_in_progmem=True # Block 00 must always reside in PROGMEM.
         elif block_to_toggle not in blocks:
             print("Invalid block.")
         else:
